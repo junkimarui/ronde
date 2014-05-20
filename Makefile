@@ -5,7 +5,7 @@ PERLVER = 5.18
 PERLLIB = /usr/lib/perl/$(PERLVER)/CORE/
 MAKE_DIRS = SimpleTrieXS SimpleHashXS
 
-all: SimpleTrie.so SimpleHash.so count
+all: SimpleTrie.so SimpleHash.so count tf
 	@for subdir in $(MAKE_DIRS); do \
 		(cd $$subdir && perl Makefile.PL  && make); \
 	done
@@ -36,9 +36,13 @@ count: count.o SimpleTrie.o SimpleHash.o
 	$(CPPC) -o count SimpleTrie.o SimpleHash.o count.o
 count.o: count.cpp SimpleHash.h
 	$(CPPC) -O3 -c count.cpp
+tf: tf.o SimpleTrie.o SimpleHash.o
+	$(CPPC) -o tf tf.o SimpleTrie.o SimpleHash.o
+tf.o: tf.cpp
+	$(CPPC) -O3 -c tf.cpp
 
 clean:
-	rm -rf SimpleTrie.so SimpleHash.so count *.o *_wrap.cpp
+	rm -rf SimpleTrie.so SimpleHash.so count *.o *_wrap.cpp tf
 	@for subdir in $(MAKE_DIRS) ; do \
 		(cd $$subdir && make clean) ;\
 	done

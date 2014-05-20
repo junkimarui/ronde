@@ -55,7 +55,7 @@ double increment(string filename, void (*p) (string)) {
 
 int main(int argc, char** argv) {
   if (argc <= 2) {
-    cout << "./count [trial number] [file]" << endl << "container type:t->trie,h->hash,m->map" << endl;
+    cout << "./count [trial number] [file]" << endl;
     return 0;
   }
   void (*p) (string);
