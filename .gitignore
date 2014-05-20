@@ -4,3 +4,5 @@
 *._wrap.cpp
 SimpleHash.pm
 SimpleTrie.pm
+paar.pm
+result/*
