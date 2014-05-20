@@ -1,0 +1,8 @@
+Changes
+Makefile.PL
+MANIFEST
+ppport.h
+README
+SimpleHashXS.xs
+t/SimpleHashXS.t
+lib/SimpleHashXS.pm
