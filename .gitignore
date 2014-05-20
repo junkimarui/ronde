@@ -2,3 +2,5 @@
 *.o
 *.so
 *._wrap.cpp
+SimpleHash.pm
+SimpleTrie.pm
