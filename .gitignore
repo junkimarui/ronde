@@ -1,5 +1,6 @@
 *~
 *.o
+*.old
 *.so
 *._wrap.cpp
 SimpleHash.pm
