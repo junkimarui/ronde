@@ -5,8 +5,9 @@ How to use
 
 How to build
 =======================
-Just type `make`.
-If you fail, edit Makefile for your own environment.
+This program requires swig 2.0 and perl5(>5.08).
+Please configure Makefile. Especially, edit the PERLLIB
+To build, type `make`.
 
 Development Environment
 ======================
