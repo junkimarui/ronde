@@ -6,7 +6,7 @@ How to use
 How to build
 =======================
 This program requires swig 2.0 and perl5(>5.08).
-Please configure Makefile. Especially, edit the PERLLIB
+Please configure Makefile. Especially, edit the PERLVER
 To build, type `make`.
 
 Development Environment

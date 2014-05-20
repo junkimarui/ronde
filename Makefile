@@ -1,7 +1,8 @@
 CC = gcc
 CPPC = g++
 SWIG = swig
-PERLLIB = /usr/lib/perl/5.18/CORE/
+PERLVER = 5.18
+PERLLIB = /usr/lib/perl/$(PERLVER)/CORE/
 MAKE_DIRS = SimpleTrieXS SimpleHashXS
 
 all: SimpleTrie.so SimpleHash.so count
