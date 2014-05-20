@@ -196,12 +196,12 @@ TO_INST_PM = count.pl \
 	countAll.pl \
 	lib/SimpleTrieXS.pm
 
-PM_TO_BLIB = countAll.pl \
-	$(INST_LIB)/countAll.pl \
-	lib/SimpleTrieXS.pm \
+PM_TO_BLIB = lib/SimpleTrieXS.pm \
 	blib/lib/SimpleTrieXS.pm \
 	count.pl \
-	$(INST_LIB)/count.pl
+	$(INST_LIB)/count.pl \
+	countAll.pl \
+	$(INST_LIB)/countAll.pl
 
 
 # --- MakeMaker platform_constants section:
@@ -544,22 +544,22 @@ clean_subdirs :
 
 clean :: clean_subdirs
 	- $(RM_F) \
-	  $(INST_ARCHAUTODIR)/extralibs.ld *$(LIB_EXT) \
-	  perlmain.c $(BASEEXT).bso \
-	  core.[0-9][0-9][0-9][0-9][0-9] perl \
+	  core.[0-9][0-9][0-9] core \
+	  perl $(INST_ARCHAUTODIR)/extralibs.all \
+	  core.*perl.*.? $(MAKE_APERL_FILE) \
+	  mon.out *$(LIB_EXT) \
+	  $(BOOTSTRAP) core.[0-9][0-9][0-9][0-9][0-9] \
+	  $(BASEEXT).x $(INST_ARCHAUTODIR)/extralibs.ld \
+	  blibdirs.ts so_locations \
 	  tmon.out perl.exe \
-	  pm_to_blib.ts $(BOOTSTRAP) \
+	  pm_to_blib.ts MYMETA.yml \
+	  core.[0-9] core.[0-9][0-9] \
+	  core.[0-9][0-9][0-9][0-9] *perl.core \
 	  $(BASEEXT).def perl$(EXE_EXT) \
-	  $(MAKE_APERL_FILE) *perl.core \
-	  MYMETA.yml core.[0-9][0-9] \
-	  core.[0-9] lib$(BASEEXT).def \
-	  core.*perl.*.? $(INST_ARCHAUTODIR)/extralibs.all \
-	  $(BASEEXT).exp MYMETA.json \
-	  core *$(OBJ_EXT) \
-	  $(BASEEXT).x so_locations \
-	  mon.out blibdirs.ts \
-	  pm_to_blib core.[0-9][0-9][0-9] \
-	  core.[0-9][0-9][0-9][0-9] SimpleTrieXS.c 
+	  pm_to_blib $(BASEEXT).exp \
+	  $(BASEEXT).bso lib$(BASEEXT).def \
+	  perlmain.c SimpleTrieXS.c \
+	  *$(OBJ_EXT) MYMETA.json 
 	- $(RM_RF) \
 	  blib 
 	- $(MV) $(FIRST_MAKEFILE) $(MAKEFILE_OLD) $(DEV_NULL)
@@ -574,8 +574,8 @@ realclean_subdirs :
 # Delete temporary files (via clean) and also delete dist files
 realclean purge ::  clean realclean_subdirs
 	- $(RM_F) \
-	  $(MAKEFILE_OLD) $(FIRST_MAKEFILE) \
-	  $(OBJECT) 
+	  $(OBJECT) $(FIRST_MAKEFILE) \
+	  $(MAKEFILE_OLD) 
 	- $(RM_RF) \
 	  $(DISTVNAME) 
 
@@ -1014,9 +1014,9 @@ ppd :
 
 pm_to_blib : $(FIRST_MAKEFILE) $(TO_INST_PM)
 	$(NOECHO) $(ABSPERLRUN) -MExtUtils::Install -e 'pm_to_blib({@ARGV}, '\''$(INST_LIB)/auto'\'', q[$(PM_FILTER)], '\''$(PERM_DIR)'\'')' -- \
-	  countAll.pl $(INST_LIB)/countAll.pl \
 	  lib/SimpleTrieXS.pm blib/lib/SimpleTrieXS.pm \
-	  count.pl $(INST_LIB)/count.pl 
+	  count.pl $(INST_LIB)/count.pl \
+	  countAll.pl $(INST_LIB)/countAll.pl 
 	$(NOECHO) $(TOUCH) pm_to_blib
 
 
