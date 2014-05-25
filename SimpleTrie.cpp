@@ -233,6 +233,24 @@ SimpleTrieIterator* SimpleTrie::prefix_search(const char* key) const {
   return new SimpleTrieIterator(elm,key);
 }
 
+vector<string> SimpleTrie::common_prefix_search(const char* key) const {
+  vector<string> candidates;
+  string str(key);
+  Element* elm = root;
+  Element* child;
+  for (int i = 0; i < strlen(key); i++) {
+    if ((child = elm->getChild(key[i])) != NULL) {
+      elm = child;
+      if (elm->term)
+	candidates.push_back(str.substr(0,i+1));
+    }
+    else {
+      break;
+    }
+  }
+  return candidates;
+}
+
 int SimpleTrie::count() const{
   return cnt;
 }

@@ -58,7 +58,8 @@ double termfreq(string filename, void (*incr) (string), vector<paar>(*vsort)()) 
   vector<paar> dump = (*vsort)();
   gettimeofday(&e, NULL);
   for (uint i = 0; i < dump.size(); i++) {
-    ofs << dump[i].first << "\t" << dump[i].second << endl;
+    if (dump[i].first.length() != 0)
+      ofs << dump[i].first << "\t" << dump[i].second << endl;
   }
   return (e.tv_sec - s.tv_sec) + (e.tv_usec - s.tv_usec)*1.0E-6;
 }

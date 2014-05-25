@@ -66,6 +66,7 @@ namespace jm_trie {
     number get(const char* key) const;
     number fget(const char* key) const;
     SimpleTrieIterator* prefix_search(const char* key) const;
+    vector<string> common_prefix_search(const char* key) const;
     int count() const;
     void nodeSort();
     vector<paar> keyValSorted() const;

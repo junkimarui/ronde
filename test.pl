@@ -17,6 +17,9 @@ my $t1 = [gettimeofday];
 print $trie->get("abc"),"\n";
 print $trie->get("abcd"),"\n";
 print $trie->get("あべこべ"),"\n";
+$trie->increment("abcクッキングスタジオ");
+$trie->increment("a");
+
 my $it = $trie->prefix_search("");
 while (my $elm = $it->next) {
     print $elm,"\n";
@@ -33,7 +36,7 @@ print $hash->get("abcd"),"\n";
 print $hash->get("abc"),"\n";
 print $hash->get("あべこべ"),"\n";
 print $hash->toString;
-my $obj = $trie->keyValSorted;
+my $obj = $trie->common_prefix_search("abcクッキングスタジオに行きたい");
 for my $o (@$obj) {
-    print $o->getFirst,"\t",$o->getSecond,"\n";
+    print $o,"\n";
 } 
