@@ -1,6 +1,6 @@
 How to use
 ======================
-1. edit textlist.perl
+1. edit textlist.perl and specify documents to be counted
 2. run `perl countAll.pl` to measure processing time
 
 How to build
